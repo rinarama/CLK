@@ -15,15 +15,6 @@ class UsersController < ApplicationController
   end
 
   def show
-
-  end
-
-  def login
-
-  end
-
-  def logout
-
   end
 
   private
