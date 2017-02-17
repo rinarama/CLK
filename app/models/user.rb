@@ -11,8 +11,9 @@ class User < ApplicationRecord
   has_many :accepted_requests, class_name: "Request", foreign_key: "requester_id", dependent: :destroy
   has_many :requestings, through: :accepted_requests, source: :user, dependent: :destroy
 
-  validates :username, :email, :password, presence: true
-  validates :username, :email, uniqueness: true
+
+  validates :first_name, :last_name, :email, presence: true
+  validates :email, uniqueness: true
   validates :password, length: {minimum: 6}
   has_secure_password
 
