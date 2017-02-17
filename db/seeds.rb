@@ -22,7 +22,6 @@ tom = User.create({
     last_name: Faker::Name.last_name
     })
 end
-byebug
 # Mary exists
 mary = User.last
 
