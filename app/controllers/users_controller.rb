@@ -5,13 +5,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    binding.pry
-    @user = User.new(params[:user])
-    if @user.save
+    @user = User.new(user_params)
 
+    if @user.save
+      redirect_to @user
     else
-      errors = @user.errors.full_messages
-      render json: errors
+      render "new"
     end
   end
 
@@ -25,6 +24,12 @@ class UsersController < ApplicationController
 
   def logout
 
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :password, :email)
   end
 
 end

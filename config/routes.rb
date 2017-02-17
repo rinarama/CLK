@@ -8,4 +8,5 @@ Rails.application.routes.draw do
 
   post "/users/login", to: "users#login"
   delete "/users/logout", to: "users#logout"
+  root "users#new"
 end
