@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_many :followers, through: :friendships, dependent: :destroy
   has_many :accepted_friendships, class_name: "Friendship", foreign_key: "follower_id", dependent: :destroy
   has_many :followings, through: :accepted_friendships, source: :user, dependent: :destroy
+  has_many :requesters, through: :requests, dependent: :destroy
+  has_many :accepted_requests, class_name: "Request", foreign_key: "requester_id", dependent: :destroy
+  has_many :requestings, through: :accepted_requests, source: :user, dependent: :destroy
 
   validates :username, :email, :password, presence: true
   validates :username, :email, uniqueness: true
@@ -17,8 +20,8 @@ class User < ApplicationRecord
     self.first_name + self.last_name
   end
 
-#all who accepted your requests
-#all who you have accepted
-# output => all my Friends
+  def friends
+    followings + followers
+  end
 
 end
