@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :user, only: [:new, :create, :show]
+  resources :comment
+  resources :post
+  resources :like, only: [:create, :destroy]
+  resources :friendship, only: [:create, :destroy]
+  resources :request, only: [:create, :destroy]
 end
