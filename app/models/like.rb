@@ -1,3 +1,6 @@
 class Like < ApplicationRecord
-  belongs_to :user_id
+  belongs_to :user
+  belongs_to :likeable, polymorphic: true
+
+  validates :status, presence: true
 end
