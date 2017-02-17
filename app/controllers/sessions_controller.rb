@@ -8,7 +8,8 @@ class SessionsController < ApplicationController
     @user = User.find_by_email(user_params[:email])
 
     if @user && @user.authenticate(user_params[:password])
-      
+      add_session(@user.id)
+      redirect_to "/users/show"
     else
       @errors = ["Invalid Email or Password"]
       render 'new'
@@ -16,6 +17,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    remove_session
+    redirect_to "/"
   end
 
   private
