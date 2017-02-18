@@ -34,8 +34,8 @@ html, body {
 
 /* Login/Register */
 #landing {
-  background-image: url(clkbg2.png);
-  background-size: 1300px 1000px;
+  background-image: url(http://www.friendshipday.org/images/Three-Best-Friends-Wallpaper.jpg);
+  background-size: 100%;
   background-color: black;
   background-repeat: no-repeat;
 }
@@ -84,7 +84,7 @@ body {
 nav {
   width: 100%;
   position: fixed;
-  background-color: #212121;
+  background-color: #212121trello;
   height: 50px;
   line-height: 50px;
   color: white;
