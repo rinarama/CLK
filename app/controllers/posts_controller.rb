@@ -1,11 +1,20 @@
 class PostsController < ApplicationController
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(content: post_params[:content], user_id: post_params[:user_id])
     if @post.save
       redirect_to "/users/#{post_params[:user_id]}"
     else
       redirect_to "/users/#{post_params[:user_id]}"
     end
+  end
+  
+  def destroy
+    @post = Post.find_by_id(params[:id]
+    )
+    @post.destroy
+    
+    redirect_to "/users/#{current_user.id}"
+    
   end
   
   private

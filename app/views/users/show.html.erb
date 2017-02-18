@@ -38,6 +38,8 @@
         <% else %>
           <% @user.posts.order(updated_at: :desc).each do |p| %>
           <div class="post-item post-id-<%= p.id %>">
+            <%= link_to 'X', post_path(p),
+            method: :delete %>
             <div><img class="picture-min" src="https://a3-images.myspacecdn.com/images03/1/240e42b5d9ce48a78983961e7fcb3c39/300x300.jpg" /><%= p.user.full_name %> </div>
             <hr>
             <div class="content"><%= p.content %></div>
