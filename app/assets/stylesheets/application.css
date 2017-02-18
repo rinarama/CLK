@@ -82,6 +82,7 @@ body {
 }
 
 nav {
+  z-index: 99;
   width: 100%;
   position: fixed;
   background-color: #212121;
@@ -300,6 +301,7 @@ div.profile-container .content section.timeline .post-container .comment-list {
 
 div.profile-container .content section.timeline .post-container .comment-list .comment-item {
   border-bottom: 1px solid #d6d6d6;
+  margin-bottom: 10px;
 }
 
 div.profile-container .content section.timeline .post-container i.fa {

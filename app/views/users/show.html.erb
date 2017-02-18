@@ -25,19 +25,18 @@
 
     <section class="timeline">
       <div class="new-post">
-        <form class="" action="" method="post">
-          <input type="text" name="" value="" placeholder="What's on your mind?">
-          <input type="submit" name="" value="Post">
-        </form>
-
-        </form>
+        <%= form_for :post, url: {controller: "posts", action: "create"} do |f| %>
+          <input type="hidden" name="post[user_id]" value="<%= current_user.id %>" />
+          <%= f.text_field :content, placeholder: "What's on your mind?" %>
+          <%= f.submit "Post" %>
+        <% end %>
       </div>
 
       <div class="post-container">
         <% if @user.posts.empty? %>
 
         <% else %>
-          <% @user.posts.each do |p| %>
+          <% @user.posts.order(updated_at: :desc).each do |p| %>
           <div class="post-item post-id-<%= p.id %>">
             <div><img class="picture-min" src="https://a3-images.myspacecdn.com/images03/1/240e42b5d9ce48a78983961e7fcb3c39/300x300.jpg" /><%= p.user.full_name %> </div>
             <hr>
@@ -48,6 +47,7 @@
               <a href="#"><i class="fa fa-comment" aria-hidden="true"></i>Comment</a>
             </div>
             <hr>
+            <% if !p.comments.empty? %>
             <div class="comment-list">
               <% p.comments.each do |c| %>
               <div class="comment-item comment-id-<%= c.id %>">
@@ -56,6 +56,7 @@
               </div>
               <% end %>
             </div>
+            <% end %>
             <div class="comment-form">
               <form class="" action="" method="post">
                 <input type="text" name="" value="" placeholder="Write your comment...">
