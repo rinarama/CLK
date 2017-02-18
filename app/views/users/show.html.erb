@@ -5,20 +5,29 @@
     </div>
     <h3><%= @user.full_name %></h3>
     <% if !authorized?(@user.id) %>
-      <% if !requested?(@user.id) %>
-        <%= form_for :request, url: {controller: "requests", action: "create"} do |f| %>
-          <input type="hidden" name="request[requester_id" value="<%= @user.id %>" />
-          <%= f.submit "Request Friendship", class: "friendships" %>
+      <% if !requested?(@user.id)  && !friend?(@user.id) %>
+        <% if requester?(@user) %>
+          <%= form_for :friendship, url: {controller: "friendships", action: "create"} do |f| %>
+            <input type="hidden" name="friendship[follower_id]" value="<%= @user.id %>" />
+            <%= f.submit "Accept Friendship", class: "friendships" %>
+          <% end %>
+        <% else %>
+          <%= form_for :request, url: {controller: "requests", action: "create"} do |f| %>
+            <input type="hidden" name="request[requester_id]" value="<%= @user.id %>" />
+            <%= f.submit "Request", class: "friendships" %>
+          <% end %>            
         <% end %>
       <% elsif !friend?(@user.id) %>
-        <%= form_for :request, url: {controller: "requests", action: "create"} do |f| %>
-          <input type="hidden" name="request[requester_id" value="<%= @user.id %>" />
-          <%= f.submit "Pending Acceptance", class: "friendships" %>
+        <%= form_for :request, url: {controller: "requests", action: "destroy"} do |f| %>
+          <input type="hidden" name="_method" value="delete" />
+          <input type="hidden" name="request[requester_id]" value="<%= @user.id %>" />
+          <%= f.submit "Pending...", class: "friendships" %>
         <% end %>
       <% else %>
-        <%= form_for :request, url: {controller: "requests", action: "create"} do |f| %>
-          <input type="hidden" name="request[requester_id" value="<%= @user.id %>" />
-          <%= f.submit "Remove Friendship", class: "friendships" %>
+        <%= form_for :friendship, url: {controller: "friendships", action: "destroy"} do |f| %>
+          <input type="hidden" name="_method" value="delete" />
+          <input type="hidden" name="friendship[follower_id]" value="<%= @user.id %>" />
+          <%= f.submit "Remove Friend", class: "friendships" %>
         <% end %>
       <% end %>
     <% end %>

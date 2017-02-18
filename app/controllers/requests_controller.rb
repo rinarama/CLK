@@ -9,6 +9,13 @@ class RequestsController < ApplicationController
     end
   end
   
+  def destroy
+      @request = Request.find_by_requester_id(request_params[:requester_id])
+      @request.destroy
+
+      redirect_to "/users/#{@request.requester_id}" 
+  end
+  
   private
   
   def request_params
