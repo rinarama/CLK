@@ -313,7 +313,19 @@ div.profile-container .content section.timeline .post-container .comment-list {
 
 div.profile-container .content section.timeline .post-container .comment-list .comment-item {
   border-bottom: 1px solid #d6d6d6;
+  position: relative;
   margin-bottom: 10px;
+}
+
+div.profile-container .content section.timeline .post-container .comment-list .comment-item a.comment-delete {
+  position: absolute;
+  right: -5px;
+  top: -10px;
+  text-decoration: none;
+}
+
+div.profile-container .content section.timeline .post-container .comment-list .comment-item a.comment-delete:hover {
+  color: lightblue;
 }
 
 div.profile-container .content section.timeline .post-container i.fa {

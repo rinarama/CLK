@@ -53,6 +53,7 @@
             <div class="comment-list">
               <% p.comments.each do |c| %>
               <div class="comment-item comment-id-<%= c.id %>">
+                <%= link_to 'X', comment_path(c), method: :delete, :class => "comment-delete" %>
                 <p><img class="picture-min" src="https://a3-images.myspacecdn.com/images03/1/240e42b5d9ce48a78983961e7fcb3c39/300x300.jpg" /><%= c.user.full_name %></p>
                 <p><%= c.content %></p>
               </div>
@@ -60,9 +61,11 @@
             </div>
             <% end %>
             <div class="comment-form">
-              <form class="" action="" method="post">
-                <input type="text" name="" value="" placeholder="Write your comment...">
-              </form>
+              <%= form_for :comment, url: {controller: "comments", action: "create"} do |f| %>
+                <input type="hidden" name="comment[post_id]" value="<%= p.id %>" />
+                <%= f.text_field :content, placeholder: "Write your comment..." %>
+                <%= f.submit "Submit", class: "hidden" %>
+              <% end %>
             </div>
           </div>
           <% end %>
