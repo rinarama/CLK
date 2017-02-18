@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
 
     if @user && @user.authenticate(user_params[:password])
       add_session(@user.id)
-      redirect_to "/users/show"
+      redirect_to "/users/#{@user.id}"
     else
       @errors = ["Invalid Email or Password"]
       render 'new'

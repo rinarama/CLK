@@ -1,6 +1,31 @@
 <div class="profile-container">
   <header>
-    <img src="https://a3-images.myspacecdn.com/images03/1/240e42b5d9ce48a78983961e7fcb3c39/300x300.jpg" />
-    <h1><%= @user.full_name %></h1>
+    <div>
+      <img class="picture" src="https://a3-images.myspacecdn.com/images03/1/240e42b5d9ce48a78983961e7fcb3c39/300x300.jpg" />
+    </div>
+    <h3><%= @user.full_name %></h3>
   </header>
+  <section class="content">
+    <aside>
+      <section class="friends">
+        <div>
+          <h4><i class="fa fa-users" aria-hidden="true"></i>Friends <span class="count">~ 45</span></h4>
+          <div>
+            <% if @user.friends.empty? %>
+              <p>Sad.. you have no friends</p>
+            <% else %>
+              <% @user.friends.each do |f| %>
+              <div class="box"><p><%= f.full_name %></p></div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+
+      </section>
+    </aside>
+
+    <section class="timeline">
+    </section>
+  </section>
 </div>
