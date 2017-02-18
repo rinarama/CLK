@@ -27,95 +27,111 @@ html, body {
   width: 100%;
 }
 
-body {
-  background: url(https://i.ytimg.com/vi/03MltTMJEzw/maxresdefault.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
 .container {
   width: 1000px;
   margin: 0 auto
 }
 
-nav {
-  background-color: rgba(156, 39, 176, 0.5);
-  height: 100px;
-  line-height: 100px;
-  color: white;
+/* Login/Register */
+#landing {
+  background: url(https://i.ytimg.com/vi/03MltTMJEzw/maxresdefault.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-nav ul{
-  line-height: 100px;
-  margin: 0px;
-}
-
-nav li {
-  list-style: none;
-  display: inline-block;
-  line-height: 100px;
-  float: right;
-  font-size: 20px;
-}
-
-nav li.brand {
-  font-size: 65px;
-  float: left;
-}
-
-nav div.login-form {
-  float: right;
-}
-
-nav div.login-form form {
-
-}
-
-nav div.login-form form div{
-
-}
-
-nav div.login-form label {
-  height: 58px;
-}
-
-nav div.login-form input {
-  height: 30px;
-}
-
- /* Login */
 div.landing {
-  display: flex;
-  height: 100%;
-  align-items: center;
+ display: flex;
+ height: 100%;
+ align-items: center;
 }
 
 div.landing-container {
-  margin: 0 auto;
-  width: 400px;
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 30px;
-  font-size: 16px;
+ margin: 0 auto;
+ width: 400px;
+ background-color: rgba(255, 255, 255, 0.1);
+ padding: 30px;
+ font-size: 16px;
 }
 
 div.landing-container form {
 }
 
 div.landing-container input {
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  width: 350px;
-  height: 50px;
-  display: inline-block;
+ border: none;
+ border-radius: 5px;
+ padding: 10px;
+ width: 350px;
+ height: 50px;
+ display: inline-block;
 }
 
 div.landing-container input[type=submit] {
-  background-color: darkred;
-  color: white;
+ background-color: darkred;
+ color: white;
 }
 
 div.landing-container .register-link {
+ color: white;
+ float: right;
+}
+
+/* main NAV */
+
+nav {
+  background-color: #444;
+  height: 50px;
+  line-height: 50px;
   color: white;
+}
+
+nav ul{
+  line-height: 50px;
+  margin: 0px;
+}
+
+nav li {
+  list-style: none;
+  display: inline-block;
+  line-height: 50px;
   float: right;
+  font-size: 16px;
+  padding: 0px 10px;
+}
+
+nav li.brand {
+  font-size: 30px;
+  float: left;
+
+}
+
+nav li span.border {
+  border-left: 1px solid white;
+}
+
+nav li.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+nav li.nav-links a:hover {
+  color: grey;
+}
+
+nav li.search-form {
+  position: relative;
+  float: left;
+}
+
+nav li.search-form .glyphicon-search {
+  position: absolute;
+  color: #444;
+  top: 17px;
+  right: 15px;
+}
+
+nav li.search-form input {
+  height: 30px;
+  width: 400px;
+  color: #444;
+  padding: 5px;
 }

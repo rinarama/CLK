@@ -15,19 +15,17 @@
     <nav>
       <ul class="container">
           <li class="brand">CLK</li>
+          <li class="search-form"><form class="search-form" action="" method="get">
+            <input type="text" name="" value="" placeholder="Search CLK">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+          </form></li>
         <% if login? %>
           <li class="nav-links">
             <%= link_to 'Logout', session_path(current_user),
             method: :delete %>
           </li>
-        <% else %>
-          <li class="nav-links">
-            <%= link_to 'Login', new_session_path %>
-          </li>
-
-          <li class="nav-links">
-            <%= link_to 'Sign Up', new_user_path %>
-          </li>
+          <li><span class="border"></span></li>
+          <li class="nav-links"><a href="/users/<%= current_user.id %>"><%= current_user.full_name %></a></li>
         <% end %>
       </ul>
     </nav>
