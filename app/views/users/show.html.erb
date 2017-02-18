@@ -4,6 +4,25 @@
       <img class="picture" src="https://a3-images.myspacecdn.com/images03/1/240e42b5d9ce48a78983961e7fcb3c39/300x300.jpg" />
     </div>
     <h3><%= @user.full_name %></h3>
+    <% if !authorized?(@user.id) %>
+      <% if !requested?(@user.id) %>
+        <%= form_for :request, url: {controller: "requests", action: "create"} do |f| %>
+          <input type="hidden" name="request[requester_id" value="<%= @user.id %>" />
+          <%= f.submit "Request Friendship", class: "friendships" %>
+        <% end %>
+      <% elsif !friend?(@user.id) %>
+        <%= form_for :request, url: {controller: "requests", action: "create"} do |f| %>
+          <input type="hidden" name="request[requester_id" value="<%= @user.id %>" />
+          <%= f.submit "Pending Acceptance", class: "friendships" %>
+        <% end %>
+      <% else %>
+        <%= form_for :request, url: {controller: "requests", action: "create"} do |f| %>
+          <input type="hidden" name="request[requester_id" value="<%= @user.id %>" />
+          <%= f.submit "Remove Friendship", class: "friendships" %>
+        <% end %>
+      <% end %>
+    <% end %>
+
   </header>
   <section class="content">
     <aside>
@@ -12,7 +31,7 @@
           <h4><i class="fa fa-users" aria-hidden="true"></i>Friends <span class="count">~ <%= @user.friends.count %></span></h4>
           <div>
             <% if @user.friends.empty? %>
-              <p>Sad.. you have no friends</p>
+              <p>Sad.. <%= @user.full_name %> has no friends</p>
             <% else %>
               <% @user.friends.each do |f| %>
               <div class="box"><p><%= f.full_name %></p></div>
@@ -24,6 +43,7 @@
     </aside>
 
     <section class="timeline">
+      <% if authorized?(@user.id) %>
       <div class="new-post">
         <%= form_for :post, url: {controller: "posts", action: "create"} do |f| %>
           <input type="hidden" name="post[user_id]" value="<%= current_user.id %>" />
@@ -31,10 +51,13 @@
           <%= f.submit "Post" %>
         <% end %>
       </div>
+      <% end %>
 
       <div class="post-container">
         <% if @user.posts.empty? %>
-
+          <div class="new-post no-post">
+            <p><%= @user.full_name %> does not have any posts...</p>
+          </div>
         <% else %>
           <% @user.posts.order(updated_at: :desc).each do |p| %>
           <div class="post-item post-id-<%= p.id %>">
