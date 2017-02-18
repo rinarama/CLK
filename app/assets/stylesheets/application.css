@@ -34,8 +34,9 @@ html, body {
 
 /* Login/Register */
 #landing {
-  background: url(https://i.ytimg.com/vi/03MltTMJEzw/maxresdefault.jpg);
-  background-size: cover;
+  background-image: url(clkbg2.png);
+  background-size: 1300px 1000px;
+  background-color: black;
   background-repeat: no-repeat;
 }
 

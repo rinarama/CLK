@@ -9,7 +9,7 @@
     <aside>
       <section class="friends">
         <div>
-          <h4><i class="fa fa-users" aria-hidden="true"></i>Friends <span class="count">~ 45</span></h4>
+          <h4><i class="fa fa-users" aria-hidden="true"></i>Friends <span class="count">~ <%= @user.friends.count %></span></h4>
           <div>
             <% if @user.friends.empty? %>
               <p>Sad.. you have no friends</p>
