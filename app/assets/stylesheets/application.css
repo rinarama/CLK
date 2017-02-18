@@ -13,3 +13,109 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+html, body {
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background: url(https://i.ytimg.com/vi/03MltTMJEzw/maxresdefault.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.container {
+  width: 1000px;
+  margin: 0 auto
+}
+
+nav {
+  background-color: rgba(156, 39, 176, 0.5);
+  height: 100px;
+  line-height: 100px;
+  color: white;
+}
+
+nav ul{
+  line-height: 100px;
+  margin: 0px;
+}
+
+nav li {
+  list-style: none;
+  display: inline-block;
+  line-height: 100px;
+  float: right;
+  font-size: 20px;
+}
+
+nav li.brand {
+  font-size: 65px;
+  float: left;
+}
+
+nav div.login-form {
+  float: right;
+}
+
+nav div.login-form form {
+
+}
+
+nav div.login-form form div{
+
+}
+
+nav div.login-form label {
+  height: 58px;
+}
+
+nav div.login-form input {
+  height: 30px;
+}
+
+ /* Login */
+div.landing {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+div.landing-container {
+  margin: 0 auto;
+  width: 400px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  font-size: 16px;
+}
+
+div.landing-container form {
+}
+
+div.landing-container input {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  width: 350px;
+  height: 50px;
+  display: inline-block;
+}
+
+div.landing-container input[type=submit] {
+  background-color: darkred;
+  color: white;
+}
+
+div.landing-container .register-link {
+  color: white;
+  float: right;
+}

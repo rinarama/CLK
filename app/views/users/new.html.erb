@@ -1,6 +1,4 @@
-<div>
-  <h1> Create New Account </h1>
-
+<div class="landing-container">
   <%= form_for(@user) do |f| %>
     <% if @user.errors.any? %>
         <div id="error">
@@ -12,24 +10,21 @@
         </div>
       <% end %>
 
-      <p>
-      <%= f.label :first_name  %> :
-      <%= f.text_field :first_name %>
+      <p>:
+      <%= f.text_field :first_name, placeholder: "First name" %>
       </p>
       <p>
-      <%= f.label :last_name  %> :
-      <%= f.text_field :last_name %>
+      <%= f.text_field :last_name, placeholder: "Last name" %>
       </p>
       <p>
-      <%= f.label :email %> :
-      <%= f.email_field :email %>
+      <%= f.email_field :email, placeholder: "Email" %>
       </p>
       <p>
-      <%= f.label :password %> :
-      <%= f.password_field :password %>
+      <%= f.password_field :password, placeholder: "Password" %>
       </p>
       <p>
-      <%= f.submit "Create an account", class: "btn btn-primary" %>
+      <%= f.submit "Create an account" %>
       </p>
   <%end%>
+    <%= link_to "Already a user? Login here", new_session_path, :class => "register-link"%>
 </div>

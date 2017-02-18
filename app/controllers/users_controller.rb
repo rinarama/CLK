@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @errors = []
+    render layout: "landing"
   end
 
   def create
