@@ -13,3 +13,293 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+html, body {
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  width: 1000px;
+  margin: 0 auto
+}
+
+/* Login/Register */
+#landing {
+  background: url(https://i.ytimg.com/vi/03MltTMJEzw/maxresdefault.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+div.landing {
+ display: flex;
+ height: 100%;
+ align-items: center;
+}
+
+div.landing-container {
+ margin: 0 auto;
+ width: 400px;
+ background-color: rgba(255, 255, 255, 0.1);
+ padding: 30px;
+ font-size: 16px;
+}
+
+div.landing-container form {
+}
+
+div.landing-container input {
+ border: none;
+ border-radius: 5px;
+ padding: 10px;
+ width: 350px;
+ height: 50px;
+ display: inline-block;
+}
+
+div.landing-container input[type=submit] {
+ background-color: darkred;
+ color: white;
+}
+
+div.landing-container .register-link {
+ color: white;
+ float: right;
+}
+
+/* main NAV */
+body {
+  background-color: #f3f3f3
+}
+
+nav {
+  width: 100%;
+  position: fixed;
+  background-color: #444;
+  height: 50px;
+  line-height: 50px;
+  color: white;
+}
+
+nav ul{
+  line-height: 50px;
+  margin: 0px;
+}
+
+nav li {
+  list-style: none;
+  display: inline-block;
+  line-height: 50px;
+  float: right;
+  font-size: 16px;
+  padding: 0px 10px;
+}
+
+nav li.brand {
+  font-size: 30px;
+  float: left;
+
+}
+
+img.picture-min {
+  width: 40px;
+  padding-right: 10px;
+}
+
+nav li span.border {
+  border-left: 1px solid white;
+}
+
+nav li.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+nav li.nav-links a:hover {
+  color: grey;
+}
+
+nav li.search-form {
+  position: relative;
+  float: left;
+}
+
+nav li.search-form .glyphicon-search {
+  position: absolute;
+  color: #444;
+  top: 17px;
+  right: 15px;
+}
+
+nav li.search-form input {
+  height: 30px;
+  width: 400px;
+  color: #444;
+  padding: 5px;
+}
+
+/* show page */
+
+div.profile-container {
+  margin-top: 50px;
+}
+
+div.profile-container header {
+  background: url(http://cdn.pcwallart.com/images/deadmau5-wallpaper-3.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: row;
+  height: 300px;
+  padding-top: 170px;
+  padding-left: 30px;
+  margin-bottom: 50px;
+  color: white;
+}
+
+div.profile-container header .picture {
+  width: 171px;
+  padding: 4px;
+  margin-right: 30px;
+  border: .5px solid #c1c1c1;
+  background-color: white;
+}
+
+div.profile-container header h3 {
+  position: relative;
+  bottom: -72px;
+}
+
+div.profile-container .content {
+  /*border: 1px solid #444;*/
+}
+
+div.profile-container .content aside {
+  width: 350px;
+  display: inline-block;
+}
+
+div.profile-container .content aside .friends {
+  width: 300px;
+  display: inline-block;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  background-color: white;
+}
+
+div.profile-container .content aside .friends h4 span.count{
+  color: grey;
+}
+
+div.profile-container .content aside .friends div.box {
+  text-align: center;
+  width: 80px;
+  height: 80px;
+  background: url("http://www.drodd.com/images12/facebook-profile-picture11.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-size: 12px;
+  position: relative;
+  margin-right: 5px;
+  display: inline-block;
+}
+
+div.profile-container .content aside .friends div.box p{
+  width: 100%;
+  color: #444;
+  position: absolute;
+  bottom: 0px;
+}
+
+i.fa-users {
+  padding-right: 10px;
+  padding-left: 10px;
+  color: darkred;
+}
+
+/* timeline */
+div.profile-container .content section.timeline {
+  width: 600px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+div.profile-container .content section.timeline .new-post {
+  background-color: white;
+
+}
+
+div.profile-container .content section.timeline .new-post form {
+  border: 1px solid #d6d6d6;
+
+}
+
+div.profile-container .content section.timeline .new-post input[type=text] {
+  width: 100%;
+  padding: 15px;
+  font-size: 20px;
+  border: none;
+  border-bottom: 1px solid #d6d6d6;
+}
+
+div.profile-container .content section.timeline .new-post input[type=submit] {
+  margin: 8px;
+  padding: 6px 30px;
+  border-radius: 2px;
+  color: white;
+  background-color: #3F51B5;
+  box-shadow: none;
+  font-size: 13px;
+  border: none;
+}
+
+div.profile-container .content section.timeline .post-container .post-item {
+  background-color: white;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+div.profile-container .content section.timeline .post-container .post-item hr {
+  margin: 5px 0px;
+}
+
+div.profile-container .content section.timeline .post-container .post-item .content {
+  padding: 10px 0px;
+}
+
+div.profile-container .content section.timeline .post-container .post-item a {
+  padding: 10px 10px 10px 0px;
+}
+
+div.profile-container .content section.timeline .post-container .comment-form {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid #d6d6d6;
+}
+
+div.profile-container .content section.timeline .post-container .comment-form input[type=text] {
+  padding: 10px;
+  width: 100%;
+}
+
+div.profile-container .content section.timeline .post-container .comment-list {
+  padding: 10px;
+  background-color: #f3f3f3;
+}
+
+div.profile-container .content section.timeline .post-container .comment-list .comment-item {
+  border-bottom: 1px solid #d6d6d6;
+}
+
+div.profile-container .content section.timeline .post-container i.fa {
+  padding-right: 5px;
+}

@@ -1,1 +1,70 @@
-<div> Show </div>
+<div class="profile-container">
+  <header>
+    <div>
+      <img class="picture" src="https://a3-images.myspacecdn.com/images03/1/240e42b5d9ce48a78983961e7fcb3c39/300x300.jpg" />
+    </div>
+    <h3><%= @user.full_name %></h3>
+  </header>
+  <section class="content">
+    <aside>
+      <section class="friends">
+        <div>
+          <h4><i class="fa fa-users" aria-hidden="true"></i>Friends <span class="count">~ 45</span></h4>
+          <div>
+            <% if @user.friends.empty? %>
+              <p>Sad.. you have no friends</p>
+            <% else %>
+              <% @user.friends.each do |f| %>
+              <div class="box"><p><%= f.full_name %></p></div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </section>
+    </aside>
+
+    <section class="timeline">
+      <div class="new-post">
+        <form class="" action="" method="post">
+          <input type="text" name="" value="" placeholder="What's on your mind?">
+          <input type="submit" name="" value="Post">
+        </form>
+
+        </form>
+      </div>
+
+      <div class="post-container">
+        <% if @user.posts.empty? %>
+
+        <% else %>
+          <% @user.posts.each do |p| %>
+          <div class="post-item post-id-<%= p.id %>">
+            <div><img class="picture-min" src="https://a3-images.myspacecdn.com/images03/1/240e42b5d9ce48a78983961e7fcb3c39/300x300.jpg" /><%= p.user.full_name %> </div>
+            <hr>
+            <div class="content"><%= p.content %></div>
+            <hr>
+            <div>
+              <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i>Like</a>
+              <a href="#"><i class="fa fa-comment" aria-hidden="true"></i>Comment</a>
+            </div>
+            <hr>
+            <div class="comment-list">
+              <% p.comments.each do |c| %>
+              <div class="comment-item comment-id-<%= c.id %>">
+                <p><img class="picture-min" src="https://a3-images.myspacecdn.com/images03/1/240e42b5d9ce48a78983961e7fcb3c39/300x300.jpg" /><%= c.user.full_name %></p>
+                <p><%= c.content %></p>
+              </div>
+              <% end %>
+            </div>
+            <div class="comment-form">
+              <form class="" action="" method="post">
+                <input type="text" name="" value="" placeholder="Write your comment...">
+              </form>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+    </section>
+  </section>
+</div>

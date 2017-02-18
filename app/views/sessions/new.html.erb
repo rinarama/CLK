@@ -1,6 +1,4 @@
-<div>
-  <h1> Login </h1>
-
+<div class="landing-container">
   <%= form_tag("/sessions", method: "post") do %>
     <% if @errors.any? %>
         <div id="error">
@@ -13,15 +11,14 @@
       <% end %>
 
       <p>
-      <%= label_tag :email %> :
-      <%= email_field_tag :email %>
+      <%= email_field_tag(:email, "", placeholder: "Email") %>
       </p>
       <p>
-      <%= label_tag :password %> :
-      <%= password_field_tag :password %>
+      <%= password_field_tag(:password, "", placeholder: "Password") %>
       </p>
       <p>
        <input type="submit" value="Login">
       </p>
   <%end%>
+  <%= link_to "New user? Join our clique here", new_user_path, :class => "register-link"%>
 </div>

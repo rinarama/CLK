@@ -4,29 +4,40 @@
     <title>ClkNetwork</title>
     <%= csrf_meta_tags %>
 
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <nav>
-      <ul>
+      <ul class="container">
+          <li class="brand">CLK</li>
+          <li class="search-form"><form class="search-form" action="" method="get">
+            <input type="text" name="" value="" placeholder="Search CLK">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+          </form></li>
         <% if login? %>
           <li class="nav-links">
             <%= link_to 'Logout', session_path(current_user),
             method: :delete %>
           </li>
-        <% else %>
+          <li><span class="border"></span></li>
           <li class="nav-links">
-            <%= link_to 'Login', new_session_path %>
-          </li>
-
-          <li class="nav-links">
-            <%= link_to 'Sign Up', new_user_path %>
+            <a href="/users/<%= current_user.id %>">
+              <img class="picture-min" src="https://a3-images.myspacecdn.com/images03/1/240e42b5d9ce48a78983961e7fcb3c39/300x300.jpg" />
+              <%= current_user.full_name %></a>
           </li>
         <% end %>
       </ul>
     </nav>
+
+    <div class="container">
     <%= yield %>
+    </div>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </body>
 </html>
