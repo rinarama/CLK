@@ -299,3 +299,7 @@ div.profile-container .content section.timeline .post-container .comment-list {
 div.profile-container .content section.timeline .post-container .comment-list .comment-item {
   border-bottom: 1px solid #d6d6d6;
 }
+
+div.profile-container .content section.timeline .post-container i.fa {
+  padding-right: 5px;
+}

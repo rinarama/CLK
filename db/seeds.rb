@@ -39,11 +39,19 @@ tom.posts.create({
   content: "Hey Mary, I'm Tom. I'm friends with everyone"
 })
 
+tom.posts.create({
+  content: "What... am.. I?"
+})
+
 # Mary comments on Tom's post  & also like his post
 post = Post.first
 comment = post.comments.create({
     user_id: mary.id, #current_user.id
     content: "Fuck you Tom!"
+})
+comment = post.comments.create({
+    user_id: mary.id, #current_user.id
+    content: "I'm just kidding Tom!"
 })
 post.likes.create({
   user_id: mary.id, #current_user.id
