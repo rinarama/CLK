@@ -109,8 +109,9 @@ nav li.brand {
 
 }
 
-nav li img.picture-min {
-  width: 30px;
+img.picture-min {
+  width: 40px;
+  padding-right: 10px;
 }
 
 nav li span.border {
@@ -259,4 +260,42 @@ div.profile-container .content section.timeline .new-post input[type=submit] {
   box-shadow: none;
   font-size: 13px;
   border: none;
+}
+
+div.profile-container .content section.timeline .post-container .post-item {
+  background-color: white;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+div.profile-container .content section.timeline .post-container .post-item hr {
+  margin: 5px 0px;
+}
+
+div.profile-container .content section.timeline .post-container .post-item .content {
+  padding: 10px 0px;
+}
+
+div.profile-container .content section.timeline .post-container .post-item a {
+  padding: 10px 10px 10px 0px;
+}
+
+div.profile-container .content section.timeline .post-container .comment-form {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid #d6d6d6;
+}
+
+div.profile-container .content section.timeline .post-container .comment-form input[type=text] {
+  padding: 10px;
+  width: 100%;
+}
+
+div.profile-container .content section.timeline .post-container .comment-list {
+  padding: 10px;
+  background-color: #f3f3f3;
+}
+
+div.profile-container .content section.timeline .post-container .comment-list .comment-item {
+  border-bottom: 1px solid #d6d6d6;
 }
