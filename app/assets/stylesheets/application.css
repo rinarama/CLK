@@ -178,7 +178,12 @@ div.profile-container header h3 {
 }
 
 div.profile-container .content {
-  border: 1px solid #444;
+  /*border: 1px solid #444;*/
+}
+
+div.profile-container .content aside {
+  width: 350px;
+  display: inline-block;
 }
 
 div.profile-container .content aside .friends {
@@ -218,4 +223,40 @@ i.fa-users {
   padding-right: 10px;
   padding-left: 10px;
   color: darkred;
+}
+
+/* timeline */
+div.profile-container .content section.timeline {
+  width: 600px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+div.profile-container .content section.timeline .new-post {
+  background-color: white;
+
+}
+
+div.profile-container .content section.timeline .new-post form {
+  border: 1px solid #d6d6d6;
+
+}
+
+div.profile-container .content section.timeline .new-post input[type=text] {
+  width: 100%;
+  padding: 15px;
+  font-size: 20px;
+  border: none;
+  border-bottom: 1px solid #d6d6d6;
+}
+
+div.profile-container .content section.timeline .new-post input[type=submit] {
+  margin: 8px;
+  padding: 6px 30px;
+  border-radius: 2px;
+  color: white;
+  background-color: #3F51B5;
+  box-shadow: none;
+  font-size: 13px;
+  border: none;
 }
