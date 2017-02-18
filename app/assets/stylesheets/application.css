@@ -267,8 +267,20 @@ div.profile-container .content section.timeline .new-post input[type=submit] {
 
 div.profile-container .content section.timeline .post-container .post-item {
   background-color: white;
+  position: relative;
   margin-top: 20px;
   padding: 10px;
+}
+
+div.profile-container .content section.timeline .post-container .post-item a.post-delete {
+  position: absolute;
+  right: 10px;
+  top: 0px;
+  text-decoration: none;
+}
+
+div.profile-container .content section.timeline .post-container .post-item a.post-delete:hover {
+  color: lightblue;
 }
 
 div.profile-container .content section.timeline .post-container .post-item hr {
