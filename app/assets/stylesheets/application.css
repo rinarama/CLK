@@ -78,10 +78,11 @@ div.landing-container .register-link {
 
 /* main NAV */
 body {
-  background-color: #f3f3f3
+  background-color: #dddddd;
 }
 
 nav {
+  z-index: 99;
   width: 100%;
   position: fixed;
   background-color: #212121;
@@ -155,6 +156,7 @@ div.profile-container {
 }
 
 div.profile-container header {
+  position: relative;
   background: url(http://cdn.pcwallart.com/images/deadmau5-wallpaper-3.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -178,6 +180,32 @@ div.profile-container header .picture {
 div.profile-container header h3 {
   position: relative;
   bottom: -72px;
+}
+
+div.profile-container header input.friendships {
+  position: absolute;
+  background: #f3f3f3;
+    padding: 5px 20px;
+    font-weight: bold;
+    color: #444;
+    right: 30px;
+    bottom: 15px;
+    text-decoration: none;
+}
+
+div.profile-container header a.friendships {
+  position: absolute;
+  background: #f3f3f3;
+    padding: 5px 20px;
+    font-weight: bold;
+    color: #444;
+    right: 30px;
+    bottom: 15px;
+    text-decoration: none;
+}
+
+div.profile-container header a.friendship:hover {
+  background-color: #aeaeae;
 }
 
 div.profile-container .content {
@@ -264,10 +292,26 @@ div.profile-container .content section.timeline .new-post input[type=submit] {
   border: none;
 }
 
+div.profile-container .content section.timeline .post-container .no-post {
+  padding: 10px;
+}
+
 div.profile-container .content section.timeline .post-container .post-item {
   background-color: white;
+  position: relative;
   margin-top: 20px;
   padding: 10px;
+}
+
+div.profile-container .content section.timeline .post-container .post-item a.post-delete {
+  position: absolute;
+  right: 10px;
+  top: 0px;
+  text-decoration: none;
+}
+
+div.profile-container .content section.timeline .post-container .post-item a.post-delete:hover {
+  color: lightblue;
 }
 
 div.profile-container .content section.timeline .post-container .post-item hr {
@@ -300,6 +344,19 @@ div.profile-container .content section.timeline .post-container .comment-list {
 
 div.profile-container .content section.timeline .post-container .comment-list .comment-item {
   border-bottom: 1px solid #d6d6d6;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+div.profile-container .content section.timeline .post-container .comment-list .comment-item a.comment-delete {
+  position: absolute;
+  right: -5px;
+  top: -10px;
+  text-decoration: none;
+}
+
+div.profile-container .content section.timeline .post-container .comment-list .comment-item a.comment-delete:hover {
+  color: lightblue;
 }
 
 div.profile-container .content section.timeline .post-container i.fa {

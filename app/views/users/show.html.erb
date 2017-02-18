@@ -4,6 +4,34 @@
       <img class="picture" src="https://a3-images.myspacecdn.com/images03/1/240e42b5d9ce48a78983961e7fcb3c39/300x300.jpg" />
     </div>
     <h3><%= @user.full_name %></h3>
+    <% if !authorized?(@user.id) %>
+      <% if !requested?(@user.id)  && !friend?(@user.id) %>
+        <% if requester?(@user) %>
+          <%= form_for :friendship, url: {controller: "friendships", action: "create"} do |f| %>
+            <input type="hidden" name="friendship[follower_id]" value="<%= @user.id %>" />
+            <%= f.submit "Accept Friendship", class: "friendships" %>
+          <% end %>
+        <% else %>
+          <%= form_for :request, url: {controller: "requests", action: "create"} do |f| %>
+            <input type="hidden" name="request[requester_id]" value="<%= @user.id %>" />
+            <%= f.submit "Request", class: "friendships" %>
+          <% end %>            
+        <% end %>
+      <% elsif !friend?(@user.id) %>
+        <%= form_for :request, url: {controller: "requests", action: "destroy"} do |f| %>
+          <input type="hidden" name="_method" value="delete" />
+          <input type="hidden" name="request[requester_id]" value="<%= @user.id %>" />
+          <%= f.submit "Pending...", class: "friendships" %>
+        <% end %>
+      <% else %>
+        <%= form_for :friendship, url: {controller: "friendships", action: "destroy"} do |f| %>
+          <input type="hidden" name="_method" value="delete" />
+          <input type="hidden" name="friendship[follower_id]" value="<%= @user.id %>" />
+          <%= f.submit "Remove Friend", class: "friendships" %>
+        <% end %>
+      <% end %>
+    <% end %>
+
   </header>
   <section class="content">
     <aside>
@@ -12,7 +40,7 @@
           <h4><i class="fa fa-users" aria-hidden="true"></i>Friends <span class="count">~ <%= @user.friends.count %></span></h4>
           <div>
             <% if @user.friends.empty? %>
-              <p>Sad.. you have no friends</p>
+              <p>Sad.. <%= @user.full_name %> has no friends</p>
             <% else %>
               <% @user.friends.each do |f| %>
               <div class="box"><p><%= f.full_name %></p></div>
@@ -24,21 +52,26 @@
     </aside>
 
     <section class="timeline">
+      <% if authorized?(@user.id) %>
       <div class="new-post">
-        <form class="" action="" method="post">
-          <input type="text" name="" value="" placeholder="What's on your mind?">
-          <input type="submit" name="" value="Post">
-        </form>
-
-        </form>
+        <%= form_for :post, url: {controller: "posts", action: "create"} do |f| %>
+          <input type="hidden" name="post[user_id]" value="<%= current_user.id %>" />
+          <%= f.text_field :content, placeholder: "What's on your mind?" %>
+          <%= f.submit "Post" %>
+        <% end %>
       </div>
+      <% end %>
 
       <div class="post-container">
         <% if @user.posts.empty? %>
-
+          <div class="new-post no-post">
+            <p><%= @user.full_name %> does not have any posts...</p>
+          </div>
         <% else %>
-          <% @user.posts.each do |p| %>
+          <% @user.posts.order(updated_at: :desc).each do |p| %>
           <div class="post-item post-id-<%= p.id %>">
+            <%= link_to 'X', post_path(p),
+            method: :delete, :class => "post-delete" %>
             <div><img class="picture-min" src="https://a3-images.myspacecdn.com/images03/1/240e42b5d9ce48a78983961e7fcb3c39/300x300.jpg" /><%= p.user.full_name %> </div>
             <hr>
             <div class="content"><%= p.content %></div>
@@ -48,18 +81,23 @@
               <a href="#"><i class="fa fa-comment" aria-hidden="true"></i>Comment</a>
             </div>
             <hr>
+            <% if !p.comments.empty? %>
             <div class="comment-list">
               <% p.comments.each do |c| %>
               <div class="comment-item comment-id-<%= c.id %>">
+                <%= link_to 'X', comment_path(c), method: :delete, :class => "comment-delete" %>
                 <p><img class="picture-min" src="https://a3-images.myspacecdn.com/images03/1/240e42b5d9ce48a78983961e7fcb3c39/300x300.jpg" /><%= c.user.full_name %></p>
                 <p><%= c.content %></p>
               </div>
               <% end %>
             </div>
+            <% end %>
             <div class="comment-form">
-              <form class="" action="" method="post">
-                <input type="text" name="" value="" placeholder="Write your comment...">
-              </form>
+              <%= form_for :comment, url: {controller: "comments", action: "create"} do |f| %>
+                <input type="hidden" name="comment[post_id]" value="<%= p.id %>" />
+                <%= f.text_field :content, placeholder: "Write your comment..." %>
+                <%= f.submit "Submit", class: "hidden" %>
+              <% end %>
             </div>
           </div>
           <% end %>
