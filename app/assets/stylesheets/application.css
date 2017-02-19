@@ -362,3 +362,26 @@ div.profile-container .content section.timeline .post-container .comment-list .c
 div.profile-container .content section.timeline .post-container i.fa {
   padding-right: 5px;
 }
+
+a.not-liked {
+  color: grey;
+}
+
+.float-left {
+  float: left
+}
+
+.like {
+  padding-right: 10px;
+}
+
+.like form {
+  border: none;
+  padding: 0px;
+}
+
+.like form input {
+  border: none;
+  padding: 0px 4px 0px 0px;
+  background-color: snow;
+}
