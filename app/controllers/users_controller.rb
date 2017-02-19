@@ -8,7 +8,6 @@ class UsersController < ApplicationController
 
 
   def new
-    require_login
     @user = User.new
     @post = Post.new
     @errors = []
@@ -16,7 +15,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    require_login
     @user = User.new(user_params)
 
     if @user.save

@@ -24,5 +24,6 @@ class User < ApplicationRecord
   def friends
     followings + followers
   end
-  
+
+
 end

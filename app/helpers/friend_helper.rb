@@ -20,4 +20,8 @@ module FriendHelper
   def liked?(post, user_id)
     post.likes.find_by_user_id(user_id)
   end
+
+  def pending_request
+    Request.where(status: nil, requester_id: current_user.id).length
+  end
 end
