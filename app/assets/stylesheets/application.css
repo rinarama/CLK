@@ -465,3 +465,14 @@ li.p-request-item {
   float: left;
   min-width: 300px;
 }
+
+li.p-request-item a {
+  text-decoration: none;
+  width: 100%;
+  display: inline-block;
+}
+
+li.p-request-item:hover {
+  background-color: #d6d3d2;
+  cursor: pointer;
+}
