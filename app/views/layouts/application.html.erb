@@ -29,6 +29,20 @@
             method: :delete %>
           </li>
           <li><span class="border"></span></li>
+          <li class="request-min">
+            <i class="fa fa-user-plus" aria-hidden="true"></i>
+
+            <span><%= pending_requests.length %></span>
+            <ul>
+              <% if pending_requests.length > 0 %>
+              <li class="p-request-item hidden">You have <%= pending_requests.length %> Friend request(s) from: </li>
+                <% pending_requests.each do |r| %>
+                  <li class="p-request-item hidden"><a href="/users/<%= r.user_id %>"><img class="picture-min" src="https://a3-images.myspacecdn.com/images03/1/240e42b5d9ce48a78983961e7fcb3c39/300x300.jpg" /><%= requester_name(r.user_id).full_name %>
+                  </a>
+                <% end %>
+              <% end %>
+            </ul>
+          </li>
           <li class="nav-links">
             <a href="/users/<%= current_user.id %>">
               <img class="picture-min" src="https://a3-images.myspacecdn.com/images03/1/240e42b5d9ce48a78983961e7fcb3c39/300x300.jpg" />
@@ -89,6 +103,14 @@
 
       searchInput.addEventListener('change', displayMatches);
       searchInput.addEventListener('keyup', displayMatches);
+
+      // pending request
+      $( ".request-min" )
+          .hover(function() {
+            $(this).children("ul").children("li").toggleClass("hidden")
+              .next()
+                .stop( true, true )
+          });
 
     </script>
   </body>
