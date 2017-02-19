@@ -130,6 +130,15 @@ nav li.nav-links a:hover {
   color: grey;
 }
 
+nav li.brand a {
+  text-decoration: none;
+  color: #c71a1a;
+}
+
+nav li.brand a:hover {
+  color: #ea4e4e;
+}
+
 nav li.search-form {
   position: relative;
   float: left;
@@ -241,6 +250,11 @@ div.profile-container .content aside .friends div.box {
   position: relative;
   margin-right: 5px;
   display: inline-block;
+  text-decoration: none;
+}
+
+div.profile-container .content aside .friends a.box {
+  color: grey;
 }
 
 div.profile-container .content aside .friends div.box p{
@@ -385,3 +399,86 @@ a.not-liked {
   padding: 0px 4px 0px 0px;
   background-color: snow;
 }
+
+/* Search Bar */
+.search-form input.search {
+  width: 100%;
+  padding:20px;
+}
+
+.search-form {
+  width: 500px;
+}
+
+/*input.search {
+  margin: 0;
+  text-align: center;
+  outline:0;
+  border:0;
+  border: 10px solid #F7F7F7;
+  width: 120%;
+  left: -10%;
+  position: relative;
+  top: 10px;
+  z-index: 2;
+  border-radius: 5px;
+  font-size: 40px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.19);
+}*/
+
+
+.suggestions {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  /*perspective:20px;*/
+}
+.suggestions li {
+  width: 100%;
+  color: #444;
+  background:white;
+  list-style: none;
+  border-bottom: 1px solid #D8D8D8;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+  margin:0;
+  transition:background 0.2s;
+  display:flex;
+  justify-content:space-between;
+  text-transform: capitalize;
+}
+
+.suggestions li:hover {
+  background-color: grey;
+  color: white;
+  border: none;
+}
+
+a.name {
+  font-size: 15px;
+  width: 100%;
+  text-decoration: none;
+}
+
+a.name:hover {
+  color: white;
+}
+
+
+.suggestions .details {
+  text-align: center;
+  font-size: 15px;
+}
+
+.suggestions .hl {
+  background:#ffc600;
+}
+
+/*.suggestions .love {
+  text-align: center;
+}*/
+
+/*a {
+  color:black;
+  background:rgba(0,0,0,0.1);
+  text-decoration: none;
+}*/
