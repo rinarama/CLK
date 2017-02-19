@@ -85,7 +85,7 @@ nav {
   z-index: 99;
   width: 100%;
   position: fixed;
-  background-color: #212121;
+  background-color: #a94442;
   height: 50px;
   line-height: 50px;
   color: white;
@@ -132,7 +132,7 @@ nav li.nav-links a:hover {
 
 nav li.brand a {
   text-decoration: none;
-  color: #c71a1a;
+  color: white;
 }
 
 nav li.brand a:hover {
@@ -230,7 +230,7 @@ div.profile-container .content aside {
 }
 
 div.profile-container .content aside .friends {
-  width: 300px;
+  width: 335px;
   display: inline-block;
   padding-left: 10px;
   padding-bottom: 10px;
