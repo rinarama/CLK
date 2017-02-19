@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @post = Post.new 
+    @post = Post.new
     @errors = []
     render layout: "landing"
   end

@@ -15,7 +15,7 @@
           <%= form_for :request, url: {controller: "requests", action: "create"} do |f| %>
             <input type="hidden" name="request[requester_id]" value="<%= @user.id %>" />
             <%= f.submit "Request", class: "friendships" %>
-          <% end %>            
+          <% end %>
         <% end %>
       <% elsif !friend?(@user.id) %>
         <%= form_for :request, url: {controller: "requests", action: "destroy"} do |f| %>
@@ -77,8 +77,31 @@
             <div class="content"><%= p.content %></div>
             <hr>
             <div>
-              <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i>Like</a>
-              <a href="#"><i class="fa fa-comment" aria-hidden="true"></i>Comment</a>
+              <% if liked?(p, current_user.id) %>
+                <span class="like">
+                  <i class="fa fa-thumbs-up float-left" aria-hidden="true"></i>
+
+                  <%= form_for(:like, :url => like_path, :html => { :method => :delete, :remote => true, class: "float-left like"}) do |f| %>
+                    <input type="hidden" name="like[likeable_id]" value="<%= p.id %>" />
+                    <%= f.submit "Like" %>
+                  <% end %>
+
+                  <%= p.likes.count %>
+                </span>
+              <% else %>
+                <span class="like not-liked">
+                  <i class="fa fa-thumbs-up float-left" aria-hidden="true"></i>
+                  <%= form_for :like, url: {controller: "likes", action: "create"}, html: { class: "float-left like"} do |f| %>
+                    <input type="hidden" name="like[likeable_id]" value="<%= p.id %>" />
+                    <%= f.submit "Like" %>
+                  <% end %>
+                  <%= p.likes.count %>
+                </span>
+              <% end %>
+
+
+
+              <span><i class="fa fa-comment" aria-hidden="true"></i>Comment<span>
             </div>
             <hr>
             <% if !p.comments.empty? %>
