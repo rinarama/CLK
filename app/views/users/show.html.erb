@@ -87,6 +87,7 @@
                   <i class="fa fa-thumbs-up float-left" aria-hidden="true"></i>
 
                   <%= form_for(:like, :url => like_path, :html => { :method => :delete, :remote => true, class: "float-left like"}) do |f| %>
+                    <input type="hidden" name="like[likeable_type]" value="post" />
                     <input type="hidden" name="like[likeable_id]" value="<%= p.id %>" />
                     <%= f.submit "Like" %>
                   <% end %>
@@ -97,6 +98,7 @@
                 <span class="like not-liked">
                   <i class="fa fa-thumbs-up float-left" aria-hidden="true"></i>
                   <%= form_for :like, url: {controller: "likes", action: "create"}, html: { class: "float-left like"} do |f| %>
+                    <input type="hidden" name="like[likeable_type]" value="post" />
                     <input type="hidden" name="like[likeable_id]" value="<%= p.id %>" />
                     <%= f.submit "Like" %>
                   <% end %>
@@ -116,6 +118,31 @@
                 <%= link_to 'X', comment_path(c), method: :delete, :class => "comment-delete" %>
                 <p><img class="picture-min" src="https://a3-images.myspacecdn.com/images03/1/240e42b5d9ce48a78983961e7fcb3c39/300x300.jpg" /><%= c.user.full_name %></p>
                 <p><%= c.content %></p>
+            <!-- comment likes -->
+                <% if liked?(c, current_user.id) %>
+                  <span class="like">
+                    <i class="fa fa-thumbs-up float-left" aria-hidden="true"></i>
+
+                    <%= form_for(:like, :url => like_path, :html => { :method => :delete, :remote => true, class: "float-left like"}) do |f| %>
+                      <input type="hidden" name="like[likeable_type]" value="comment" />
+                      <input type="hidden" name="like[likeable_id]" value="<%= c.id %>" />
+                      <%= f.submit "Like" %>
+                    <% end %>
+
+                    <%= c.likes.count %>
+                  </span>
+                <% else %>
+                  <span class="like not-liked">
+                    <i class="fa fa-thumbs-up float-left" aria-hidden="true"></i>
+                    <%= form_for :like, url: {controller: "likes", action: "create"}, html: { class: "float-left like"} do |f| %>
+                      <input type="hidden" name="like[likeable_type]" value="comment" />
+                      <input type="hidden" name="like[likeable_id]" value="<%= c.id %>" />
+                      <%= f.submit "Like" %>
+                    <% end %>
+                    <%= c.likes.count %>
+                  </span>
+                <% end %>
+          <!-- comment likes end -->
               </div>
               <% end %>
             </div>

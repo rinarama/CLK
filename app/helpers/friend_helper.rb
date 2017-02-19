@@ -17,8 +17,8 @@ module FriendHelper
     friend.friendships.find_by_follower_id(current_user.id) || current_user.friendships.find_by_follower_id(id)
   end
 
-  def liked?(post, user_id)
-    post.likes.find_by_user_id(user_id)
+  def liked?(type, user_id)
+    type.likes.find_by_user_id(user_id)
   end
 
   def pending_requests
