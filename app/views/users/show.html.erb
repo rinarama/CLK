@@ -1,7 +1,9 @@
 <div class="profile-container">
   <header>
     <div>
-      <img class="picture" src="https://a3-images.myspacecdn.com/images03/1/240e42b5d9ce48a78983961e7fcb3c39/300x300.jpg" />
+      <a href="#">
+        <img class="picture" src="https://a3-images.myspacecdn.com/images03/1/240e42b5d9ce48a78983961e7fcb3c39/300x300.jpg" />
+      </a>
     </div>
     <h3><%= @user.full_name %></h3>
     <% if !authorized?(@user.id) %>
@@ -43,7 +45,9 @@
               <p>Sad.. <%= @user.full_name %> has no friends</p>
             <% else %>
               <% @user.friends.each do |f| %>
-              <div class="box"><p><%= f.full_name %></p></div>
+              <a class="box" href="/users/<%= f.id %>">
+                <div class="box"><p><%= f.full_name %></p></div>
+              </a>
               <% end %>
             <% end %>
           </div>
@@ -72,7 +76,8 @@
           <div class="post-item post-id-<%= p.id %>">
             <%= link_to 'X', post_path(p),
             method: :delete, :class => "post-delete" %>
-            <div><img class="picture-min" src="https://a3-images.myspacecdn.com/images03/1/240e42b5d9ce48a78983961e7fcb3c39/300x300.jpg" /><%= p.user.full_name %> </div>
+            <div>
+                <img class="picture-min" src="https://a3-images.myspacecdn.com/images03/1/240e42b5d9ce48a78983961e7fcb3c39/300x300.jpg" /><a href=""> <%= p.user.full_name %> </a> </div>
             <hr>
             <div class="content"><%= p.content %></div>
             <hr>

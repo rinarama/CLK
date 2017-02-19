@@ -14,11 +14,15 @@
   <body>
     <nav>
       <ul class="container">
-          <li class="brand">CLK</li>
-          <li class="search-form"><form class="search-form" action="" method="get">
-            <input type="text" name="" value="" placeholder="Search CLK">
-            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-          </form></li>
+          <li class="brand"><a href="/users/<%= current_user.id %>">CLK</a></li>
+          <li class="search-form">
+            <form class="search-form" action="" method="get">
+              <input type="text" class="search" placeholder="Search CLK" value="Search CLK for users">
+              <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </form>
+            <ul class="suggestions">
+            </ul>
+        </li>
         <% if login? %>
           <li class="nav-links">
             <%= link_to 'Logout', session_path(current_user),
@@ -39,5 +43,53 @@
     </div>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script>
+      // #################### Search function ##################
+      var endpoint = "http://localhost:3000/users"
+
+      var users = [];
+
+      fetch(endpoint)
+        .then(blob => blob.json())
+        .then(data => users = data )
+
+      function findMatches(wordToMatch, users) {
+        return users.filter(user => {
+          var regex = new RegExp(wordToMatch, 'gi');
+          return user.first_name.match(regex) || user.last_name.match(regex);
+        });
+      }
+
+      function displayMatches() {
+        if (this.value == "") {
+          return
+        }
+
+        var matchArray = findMatches(this.value, users);
+        var html = matchArray.map(user => {
+          var regex = new RegExp(this.value, 'gi');
+          var firstName =
+              user.first_name.replace(regex, `<span class="hl">${this.value}</span>`);
+          var lastName =
+              user.last_name.replace(regex, `<span class="hl">${this.value}</span>`);
+
+          return `
+            <li class="search-result">
+              <a class="name" href="/users/${user.id}">
+                  ${firstName} ${lastName}
+              </a>
+            </li>
+          `;
+        }).join('');
+        suggestions.innerHTML = html;
+      }
+
+      var searchInput = document.querySelector('.search');
+      var suggestions = document.querySelector('.suggestions');
+
+      searchInput.addEventListener('change', displayMatches);
+      searchInput.addEventListener('keyup', displayMatches);
+
+    </script>
   </body>
 </html>

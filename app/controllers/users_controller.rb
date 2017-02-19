@@ -1,6 +1,14 @@
 class UsersController < ApplicationController
 
+  def index
+    User.all
+    users = User.all
+    render json: users
+  end
+
+
   def new
+    require_login
     @user = User.new
     @post = Post.new
     @errors = []
@@ -8,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    require_login
     @user = User.new(user_params)
 
     if @user.save
@@ -19,6 +28,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    require_login
     @user = User.find_by_id(params[:id])
   end
 

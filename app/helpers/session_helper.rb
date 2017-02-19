@@ -7,7 +7,7 @@ module SessionHelper
     !!current_user
   end
 
-  def require_user
+  def require_login
     redirect_to root_url unless current_user
   end
 
